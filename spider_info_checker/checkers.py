@@ -56,6 +56,6 @@ def find_spider_info(parsed_tree: ast.Module, constant_path: str, errors_list: l
 
                 return json.loads(spiders_info.partition("=")[-1])
 
-    errors_list += (
+    errors_list.append(
         ErrMessages.spiders_info.format(constant_path=constant_path)
     )
