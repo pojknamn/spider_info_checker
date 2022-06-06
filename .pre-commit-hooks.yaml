@@ -1,0 +1,7 @@
+-   id: check_info
+    name: check_info
+    description: 'Тут обязательно будет текст.'
+    entry: check_info
+    language: python
+    types: [python]
+    require_serial: true
