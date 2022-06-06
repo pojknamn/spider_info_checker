@@ -1,3 +1,5 @@
+from contextlib import suppress
+
 import libcst as cst
 from libcst import matchers as m
 
@@ -14,4 +16,5 @@ class CollectSpiderNames(cst.CSTVisitor):
                 body=[m.Assign(targets=[m.AssignTarget(target=m.Name("name"))])]
             ),
         ):
-            self.spider_names.add(node.body[0].value.value.replace('"', ''))
+            with suppress(AttributeError):
+                self.spider_names.add(node.body[0].value.value.replace('"', ''))

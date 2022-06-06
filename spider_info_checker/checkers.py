@@ -1,7 +1,7 @@
 import ast
 import json
 
-from .errors import ErrMessages, NoSpiderInfo
+from .errors import ErrMessages
 
 
 def is_spider(filename: str) -> tuple:
@@ -34,8 +34,7 @@ def check_terms_n_urls(parsed_tree: ast.Module, constant_path: str, errors_list:
             )
 
 
-
-def find_spider_info(parsed_tree: ast.Module, constant_path: str):
+def find_spider_info(parsed_tree: ast.Module, constant_path: str, errors_list: list):
     for fields in parsed_tree.body:
         dump_node = ast.dump(fields)
         if "SPIDERS_INFO" in dump_node:
@@ -57,6 +56,6 @@ def find_spider_info(parsed_tree: ast.Module, constant_path: str):
 
                 return json.loads(spiders_info.partition("=")[-1])
 
-    raise NoSpiderInfo(
+    errors_list += (
         ErrMessages.spiders_info.format(constant_path=constant_path)
     )

@@ -21,7 +21,7 @@ def main():
         update_sprider_names(spider, spider_names)
         check_terms_n_urls(constant_syntax_tree, constant, errors_to_fix)
         try:
-            spiders_info = find_spider_info(constant_syntax_tree, constant)
+            spiders_info = find_spider_info(constant_syntax_tree, constant, errors_to_fix)
             spiders_info_names = set(spiders_info.keys())
             spider_names = set(spider_names)
             spiders_without_info = spider_names.difference(spiders_info_names)
