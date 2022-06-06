@@ -17,4 +17,4 @@ class CollectSpiderNames(cst.CSTVisitor):
             ),
         ):
             with suppress(AttributeError):
-                self.spider_names.add(node.body[0].value.value.replace('"', ''))
+                self.spider_names.add(node.body[0].value.value.replace('"', '').replace("'", ""))
