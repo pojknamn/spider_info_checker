@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
 	name="spider-info-checker",
-	version="0.0.5",
+	version="0.0.6",
 	author="pojk",
 	description="Checks for correct spiders info",
 	url="https://github.com/pojknamn/spider_info_checker",

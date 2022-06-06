@@ -1,5 +1,5 @@
 repos:
 -   repo: https://github.com/pojknamn/spider_info_checker
-    rev: v0.0.5
+    rev: v0.0.6
     hooks:
     -   id: check_info
