@@ -46,7 +46,7 @@ class SpiderInfo:
     }
 
 
-def spider_info_from_template(names: set):
+def spider_info_from_template(names: set) -> dict:
     spider_info_missed = {}
     for name in names:
         if "_search" in name:

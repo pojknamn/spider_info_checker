@@ -4,7 +4,7 @@ from .models import (SpidersInfoCat, SpidersInfoReviews, SpidersInfoSearch,
                      SpidersInfoTrue)
 
 
-def validate_spiders_info(spiders_info: dict, errors_to_fix: list, none_of_there: set):
+def validate_spiders_info(spiders_info: dict, errors_to_fix: list, none_of_there: set) -> None:
     for info in spiders_info.items():
         spider_name, spider_info_dict = info
         try:

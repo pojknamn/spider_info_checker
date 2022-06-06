@@ -47,7 +47,7 @@ def main():
         print("*" * 20)
         if spiders_without_info:
             pprint(spider_info_from_template(spiders_without_info), sort_dicts=False)
-        raise NoSpiderInfo()
+        raise NoSpiderInfo(ErrMessages.wish_message)
 
 
 if __name__ == "__main__":

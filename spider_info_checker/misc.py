@@ -7,7 +7,7 @@ from .errors import ErrMessages
 from .visitors import CollectSpiderNames
 
 
-def update_errors_list(error_msg, error_list, spider_name):
+def update_errors_list(error_msg, error_list: list, spider_name: str) -> None:
     err_msg = "\n".join(error_msg.args[0])
     error_list.append(ErrMessages.spiders_info_invalid.format(message=f"{spider_name}\n{err_msg}"))
 

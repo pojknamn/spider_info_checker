@@ -14,7 +14,7 @@ def is_spider(filename: str) -> tuple:
         return f"{spiders_folder}/{spider}", filename
 
 
-def check_terms_n_urls(parsed_tree: ast.Module, constant_path: str, errors_list: list):
+def check_terms_n_urls(parsed_tree: ast.Module, constant_path: str, errors_list: list) -> None:
     files_to_fix = []
     for fields in parsed_tree.body:
         dump_node = ast.dump(fields)
@@ -34,7 +34,7 @@ def check_terms_n_urls(parsed_tree: ast.Module, constant_path: str, errors_list:
             )
 
 
-def find_spider_info(parsed_tree: ast.Module, constant_path: str, errors_list: list):
+def find_spider_info(parsed_tree: ast.Module, constant_path: str, errors_list: list) -> dict | None:
     for fields in parsed_tree.body:
         dump_node = ast.dump(fields)
         if "SPIDERS_INFO" in dump_node:
