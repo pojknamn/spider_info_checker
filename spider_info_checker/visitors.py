@@ -1,3 +1,4 @@
+import re
 from contextlib import suppress
 
 import libcst as cst
@@ -17,4 +18,6 @@ class CollectSpiderNames(cst.CSTVisitor):
             ),
         ):
             with suppress(AttributeError):
-                self.spider_names.add(node.body[0].value.value.replace('"', '').replace("'", ""))
+                spider_name = node.body[0].value.value
+                spider_name = re.sub(r'[\'\"]', '', spider_name)
+                self.spider_names.add(spider_name)

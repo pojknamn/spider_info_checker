@@ -11,12 +11,12 @@ from .validators import validate_spiders_info
 def main():
     files = sys.argv[1:]
     files = load_pairs(files)
-    spider_names = set()
-    spiders_info = []
     errors_to_fix = []
-    wrong_names_in_info = set()
     spiders_without_info = set()
     for spider, constant in files:
+        spider_names = set()
+        spiders_info = []
+        wrong_names_in_info = set()
         constant_syntax_tree = ast_from_constant(constant)
         update_sprider_names(spider, spider_names)
         check_terms_n_urls(constant_syntax_tree, constant, errors_to_fix)
