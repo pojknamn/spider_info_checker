@@ -10,14 +10,18 @@ class CollectSpiderNames(cst.CSTVisitor):
         super().__init__()
         self.spider_names = spider_names
 
-    def visit_SimpleStatementLine(self, node: "SimpleStatementLine") -> None:
-        if m.matches(
-            node,
-            m.SimpleStatementLine(
-                body=[m.Assign(targets=[m.AssignTarget(target=m.Name("name"))])]
-            ),
-        ):
-            with suppress(AttributeError):
-                spider_name = node.body[0].value.value
-                spider_name = re.sub(r'[\'\"]', '', spider_name)
-                self.spider_names.add(spider_name)
+    def visit_ClassDef_name(self, node: "ClassDef") -> None:
+        class_name = node.name.value
+        if 'Spider' in class_name:
+            class_components = node.body.body
+            for comp in class_components:
+                if m.matches(
+                        comp,
+                        m.SimpleStatementLine(
+                            body=[m.Assign(targets=[m.AssignTarget(target=m.Name("name"))])]
+                        )):
+                    with suppress(AttributeError):
+                        spider_name = comp.body[0].value.value
+                    spider_name = re.sub(r'[\'\"]', '', spider_name)
+                    self.spider_names.add(spider_name)
+

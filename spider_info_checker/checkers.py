@@ -28,7 +28,7 @@ def check_terms_n_urls(parsed_tree: ast.Module, constant_path: str, errors_list:
                 files_to_fix.append({"err_type": "search_terms", "where": constant_path})
     if files_to_fix:
         for error_file in files_to_fix:
-            errors_list += (
+            errors_list.append(
                 ErrMessages.comment_urls_or_terms.format(error_type=error_file['err_type'],
                                                          error_location=error_file['where'])
             )
@@ -41,6 +41,7 @@ def find_spider_info(parsed_tree: ast.Module, constant_path: str, errors_list: l
             json_dict = {}
             try:
                 spiders_info = ast.walk(fields).__next__().value.value
+                errors_list.append(ErrMessages.spiders_info_is_str(constant_path=constant_path))
             except AttributeError:
                 spiders_info_dicts = ast.walk(fields).__next__().value.values
                 spiders_info_keys = ast.walk(fields).__next__().value.keys

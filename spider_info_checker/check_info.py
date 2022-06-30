@@ -1,11 +1,11 @@
 from pprint import pprint
 
-from .checkers import check_terms_n_urls, find_spider_info
-from .config import *
-from .errors import ErrMessages, NoSpiderInfo
-from .misc import ast_from_constant, load_pairs, update_sprider_names
-from .templates import spider_info_from_template
-from .validators import validate_spiders_info
+from spider_info_checker.checkers import check_terms_n_urls, find_spider_info
+from spider_info_checker.config import *
+from spider_info_checker.errors import ErrMessages, NoSpiderInfo
+from spider_info_checker.misc import ast_from_constant, load_pairs, update_sprider_names
+from spider_info_checker.templates import spider_info_from_template
+from spider_info_checker.validators import validate_spiders_info
 
 
 def main():

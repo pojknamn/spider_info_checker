@@ -22,6 +22,7 @@ class ErrMessages:
     wish_message = "Все поправимо!"
     missing_info = "Тут нехватает инфы для {spiders_without_info}"
     wrong_spider_names = "Это здесь лишнее {wrong_names_in_info}"
+    spiders_info_is_str = 'Спайдерс инфо не константа, а текст у {constant_path}'
     if platform != 'linux':
         spiders_info = "Check spiders info in {constant_path}, its missed or wrong name"
         comment_urls_or_terms = "Please, comment all {error_type} in {error_location}\n"
@@ -31,3 +32,4 @@ class ErrMessages:
         wish_message = "There is no big deal!"
         missing_info = "There is missing items in spiders info {spiders_without_info}"
         wrong_spider_names = "This isn`t from here {wrong_names_in_info}"
+        spiders_info_is_str = 'Spiders info isn`t a constant but text at {constant_path}'

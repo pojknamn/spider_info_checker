@@ -1,6 +1,6 @@
-from .errors import ErrMessages, NotValidSpiderInfo
-from .misc import update_errors_list
-from .models import (SpidersInfoCat, SpidersInfoReviews, SpidersInfoSearch,
+from spider_info_checker.errors import ErrMessages, NotValidSpiderInfo
+from spider_info_checker.misc import update_errors_list
+from spider_info_checker.models import (SpidersInfoCat, SpidersInfoReviews, SpidersInfoSearch,
                      SpidersInfoTrue)
 
 
