@@ -1,24 +1,20 @@
-from pprint import pprint
-
 from spider_info_checker.checkers import check_terms_n_urls, find_spider_info
-from spider_info_checker.config import *
 from spider_info_checker.errors import ErrMessages, NoSpiderInfo
-from spider_info_checker.misc import ast_from_constant, load_pairs, update_sprider_names
-from spider_info_checker.templates import spider_info_from_template
+from spider_info_checker.misc import ast_from_constant, load_pairs, update_spider_names
+from spider_info_checker.transformers import update_spiders_info
 from spider_info_checker.validators import validate_spiders_info
 
 
 def main():
-    files = sys.argv[1:]
+    # files = sys.argv[1:]
+    files = ['/Users/pojk/PycharmProjects/spider_info_checker/spiders/esteelauder.py']
     files = load_pairs(files)
     errors_to_fix = []
-    spiders_without_info = set()
     for spider, constant in files:
         spider_names = set()
-        spiders_info = []
         wrong_names_in_info = set()
         constant_syntax_tree = ast_from_constant(constant)
-        update_sprider_names(spider, spider_names)
+        update_spider_names(spider, spider_names)
         check_terms_n_urls(constant_syntax_tree, constant, errors_to_fix)
         spiders_info = find_spider_info(constant_syntax_tree, constant, errors_to_fix)
 
@@ -34,6 +30,7 @@ def main():
             errors_to_fix.append(
                 ErrMessages.missing_info.format(spiders_without_info=spiders_without_info)
             )
+            update_spiders_info(spiders_info, spiders_without_info, const_file=constant)
 
         if wrong_names_in_info:
             errors_to_fix.append(
@@ -48,11 +45,8 @@ def main():
         print("*" * 20)
         print("\n".join(errors_to_fix))
         print("*" * 20)
-        if spiders_without_info:
-            pprint(spider_info_from_template(spiders_without_info), sort_dicts=False)
         raise NoSpiderInfo(ErrMessages.wish_message)
 
 
 if __name__ == "__main__":
     main()
-

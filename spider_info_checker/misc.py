@@ -20,13 +20,20 @@ def load_pairs(diff_list: list) -> set:
     return pairs
 
 
-def update_sprider_names(spider: str, spider_names: set) -> None:
+def update_spider_names(spider: str, spider_names: set) -> None:
     with open(spider, 'r') as spider_file:
         spider_syntax_tree = cst.parse_module(spider_file.read())
         spider_syntax_tree.visit(CollectSpiderNames(spider_names))
 
 
 def ast_from_constant(constant: str) -> ast.Module:
-        with open(constant, "r") as constant_file:
-            constant_syntax_tree = ast.parse(constant_file.read())
-        return constant_syntax_tree
+    with open(constant, "r") as constant_file:
+        constant_syntax_tree = ast.parse(constant_file.read())
+    return constant_syntax_tree
+
+
+def get_cst_from_file(file_path):
+    with open(file_path) as code:
+        code = code.read()
+    tree = cst.parse_module(code)
+    return tree

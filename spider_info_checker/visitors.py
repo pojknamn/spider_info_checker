@@ -12,7 +12,7 @@ class CollectSpiderNames(cst.CSTVisitor):
 
     def visit_ClassDef_name(self, node: "ClassDef") -> None:
         class_name = node.name.value
-        if 'Spider' in class_name:
+        if 'Parser' not in class_name:
             class_components = node.body.body
             for comp in class_components:
                 if m.matches(

@@ -1,6 +1,6 @@
 -   id: check_info
     name: check_info
-    description: 'Тут обязательно будет текст.'
+    description: 'Проверяет корректность заполнения констант пауков.'
     entry: check_info
     language: python
     types: [python]
