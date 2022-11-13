@@ -1,3 +1,5 @@
+import sys
+
 from spider_info_checker.checkers import check_terms_n_urls, find_spider_info
 from spider_info_checker.errors import ErrMessages, NoSpiderInfo
 from spider_info_checker.misc import ast_from_constant, load_pairs, update_spider_names
@@ -6,8 +8,7 @@ from spider_info_checker.validators import validate_spiders_info
 
 
 def main():
-    # files = sys.argv[1:]
-    files = ['/Users/pojk/PycharmProjects/spider_info_checker/spiders/esteelauder.py']
+    files = sys.argv[1:]
     files = load_pairs(files)
     errors_to_fix = []
     for spider, constant in files:

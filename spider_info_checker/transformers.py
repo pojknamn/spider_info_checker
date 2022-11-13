@@ -4,7 +4,7 @@ from libcst import matchers as m
 
 from spider_info_checker.misc import get_cst_from_file
 from spider_info_checker.templates import SUPER_COMMA, get_dict_from_spider_name
-from templates import SpiderInfoTemplates
+from .templates import SpiderInfoTemplates
 
 Sinfo = SpiderInfoTemplates()
 
