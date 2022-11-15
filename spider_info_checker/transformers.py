@@ -13,7 +13,7 @@ def update_spiders_info(spiders_info: dict | None, missed_spiders_names: set, co
     const_cst = get_cst_from_file(const_file)
     if not spiders_info:
         body = const_cst.body
-        body.append(Sinfo.assign)
+        body.append(Sinfo.EMPTY_SPIDERS_INFO)
         const_cst = const_cst.with_changes(body=body)
     new_file = const_cst.visit(SpidersInfoTransformer(missed_spiders_names))
     with open(const_file, "w") as file:

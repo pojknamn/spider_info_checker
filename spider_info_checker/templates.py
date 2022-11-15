@@ -7,6 +7,7 @@ SUPER_COMMA = cst.Comma(whitespace_after=cst.ParenthesizedWhitespace(indent=True
 EPMTY_SPIDERS_INFO_STATEMENT = """_SPIDERS_INFO = {
 }"""
 
+
 class SpiderInfoTemplates:
     def __init__(self):
         self.base = {
@@ -68,14 +69,12 @@ class SpiderInfoTemplates:
             self.__setattr__(f"{template_namr}_cst", cst_dict)
 
 
-
-
 def get_dict_from_spider_name(spider_name):
     templates = SpiderInfoTemplates()
     if "_search" in spider_name:
         sinfo_dict = templates.search_cst
     elif "_category" in spider_name:
-        sinfo_dict = templates.cat_cst
+        sinfo_dict = templates.category_cst
     elif "_reviews" in spider_name:
         sinfo_dict = templates.reviews_cst
     else:
